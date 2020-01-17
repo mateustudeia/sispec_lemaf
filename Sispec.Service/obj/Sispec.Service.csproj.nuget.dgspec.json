@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mateu\\source\\repos\\Sispec\\Sispec.Service\\Sispec.Service.csproj": {}
+    "D:\\workspace\\Sispec\\sispec_lemaf\\Sispec.Service\\Sispec.Service.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mateu\\source\\repos\\Sispec\\Sispec.Service\\Sispec.Service.csproj": {
+    "D:\\workspace\\Sispec\\sispec_lemaf\\Sispec.Service\\Sispec.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mateu\\source\\repos\\Sispec\\Sispec.Service\\Sispec.Service.csproj",
+        "projectUniqueName": "D:\\workspace\\Sispec\\sispec_lemaf\\Sispec.Service\\Sispec.Service.csproj",
         "projectName": "Sispec.Service",
-        "projectPath": "C:\\Users\\mateu\\source\\repos\\Sispec\\Sispec.Service\\Sispec.Service.csproj",
-        "packagesPath": "C:\\Users\\TEMP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mateu\\source\\repos\\Sispec\\Sispec.Service\\obj\\",
+        "projectPath": "D:\\workspace\\Sispec\\sispec_lemaf\\Sispec.Service\\Sispec.Service.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\workspace\\Sispec\\sispec_lemaf\\Sispec.Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\TEMP\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.1"
@@ -58,7 +60,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
