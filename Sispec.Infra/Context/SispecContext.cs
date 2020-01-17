@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Sispec.Infra.Mapping;
+using Sispec.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,10 +8,12 @@ namespace Sispec.Infra.Context
 {
     class SispecContext : DbContext
     {
-        public DbSet<MPec> Pecs { get; set; }
+        public DbSet<Evento> Eventos { get; set; }
+        public DbSet<Pessoa> Pessoas { get; set; }
+        public DbSet<Local> Locais { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseNpgsql("Host = 127.0.0.1; Database = dbsispec; Username = tudeia; Password = 123456");
+            => optionsBuilder.UseNpgsql("Host = localhost; Database = dbsispec; Username = tudeia; Password = 123456");
         
     }
 }

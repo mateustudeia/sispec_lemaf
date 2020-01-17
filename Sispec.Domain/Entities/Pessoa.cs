@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Sispec.Infra.Mapping
+namespace Sispec.Domain.Entities
 {
-    class MPec
+    public class Pessoa : BaseEntity
     {
 
     }
