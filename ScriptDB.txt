@@ -1,0 +1,125 @@
+-- Database: sispecdb
+
+-- DROP DATABASE sispecdb;
+
+CREATE DATABASE sispecdb
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Portuguese_Brazil.1252'
+    LC_CTYPE = 'Portuguese_Brazil.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+GRANT ALL ON DATABASE sispecdb TO postgres;
+
+GRANT TEMPORARY, CONNECT ON DATABASE sispecdb TO PUBLIC;
+
+	
+GRANT CONNECT ON DATABASE sispecdb TO postgres;
+
+GRANT USAGE ON SCHEMA sispec TO tudeia;
+-- -----------------------------------------------------
+-- Schema sispec
+-- -----------------------------------------------------
+DROP SCHEMA sispec;
+
+-- -----------------------------------------------------
+-- Schema sispec
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS sispec;
+GRANT USAGE ON SCHEMA sispec TO tudeia;
+USE tudeia;
+
+-- -----------------------------------------------------
+-- Table sispec.Pessoa
+-- -----------------------------------------------------
+GRANT USAGE ON SCHEMA sispec TO tudeia;
+
+DROP TABLE IF EXISTS sispec.Pessoa ;
+
+CREATE TABLE IF NOT EXISTS sispec.Pessoa (
+  idPessoa INT NOT NULL,
+  nomePessoa VARCHAR(45) NOT NULL,
+  cpf VARCHAR(45) NULL,
+  contatoPessoa VARCHAR(45) NULL,
+  emailPessoa VARCHAR(45) NOT NULL,
+  dataNascimento VARCHAR(45) NOT NULL,
+  CONSTRAINT pk_pessoa PRIMARY KEY (idPessoa));
+
+
+-- -----------------------------------------------------
+-- Table sispec.Participante
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS sispec.Participante ;
+
+CREATE TABLE IF NOT EXISTS sispec.Participante (
+  idParticipante SERIAL NOT NULL,
+  idPessoa INT NOT NULL,
+  CONSTRAINT pk_participante PRIMARY KEY (idParticipante),
+  CONSTRAINT fk_i_pessoa FOREIGN KEY (idPessoa) REFERENCES sispec.Pessoa (idPessoa)
+);
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE  sispec.Participante TO tudeia;
+GRANT SELECT, UPDATE ON SEQUENCE  sispec.participante_id_seq TO tudeia;
+
+
+
+-- -----------------------------------------------------
+-- Table sispec.Palestrante
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS sispec.Palestrante ;
+
+CREATE TABLE IF NOT EXISTS sispec.Palestrante (
+  idPalestrante INT NOT NULL,
+  idPessoa INT NOT NULL,
+  CONSTRAINT pk_palestrante PRIMARY KEY (idPalestrante),
+  CONSTRAINT fk_p_pessoa FOREIGN KEY (idPessoa) REFERENCES sispec.Pessoa (idPessoa)    
+);
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE  sispec.Palestrante TO tudeia;
+GRANT SELECT, UPDATE ON SEQUENCE  sispec.palestante_id_seq TO tudeia;
+
+
+-- -----------------------------------------------------
+-- Table sispec.Local
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS sispec.Local ;
+
+CREATE TABLE IF NOT EXISTS sispec.Local (
+  idLocal INT NOT NULL,
+  nomeLocal VARCHAR(45) NOT NULL,
+  capacidadeLocal INT NOT NULL,
+  CONSTRAINT pk_local PRIMARY KEY (idLocal)
+);
+
+-- -----------------------------------------------------
+-- Table sispec.Pec
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS sispec.Pec ;
+
+CREATE TABLE IF NOT EXISTS sispec.Pec (
+  idPec INT NOT NULL,
+  temaPec INT NOT NULL,
+  descricaoPec TEXT NULL,
+  dataRealizacao DATE NOT NULL,
+  tempoDuracao TIME NOT NULL,
+  tipoPec VARCHAR(40) NOT NULL,
+  disponivel BOOLEAN NOT NULL,
+  palestrante INT NOT NULL,
+  inscritoPec INT NOT NULL,
+  local INT NOT NULL,
+  CONSTRAINT pk_pec PRIMARY KEY (idPec),
+  CONSTRAINT fk_pe_parcipante FOREIGN KEY (inscritoPec) REFERENCES sispec.Participante (idParticipante)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT fk_pe_palestrante FOREIGN KEY (palestrante) REFERENCES sispec.Palestrante (idPalestrante)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT fk_pe_local FOREIGN KEY (local) REFERENCES sispec.Local (idLocal)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+	
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
