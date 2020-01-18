@@ -1,7 +1,7 @@
 /.vs
-/Sispec.Application/bin/
-/Sispec.Application/obj/
-/Sispec.Domain/obj/
-/Sispec.Domain/bin/
-/Sispec.Service/bin/
-/Sispec.Service/obj/
+Sispec.Application/bin/
+Sispec.Application/obj/
+Sispec.Domain/obj/
+Sispec.Domain/bin/
+Sispec.Service/bin/
+Sispec.Service/obj/

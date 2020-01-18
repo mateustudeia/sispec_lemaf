@@ -9,6 +9,8 @@ namespace Sispec.Infra.Context
     class SispecContext : DbContext
     {
         public DbSet<Evento> Eventos { get; set; }
+        public DbSet<Palestra> Palestras { get; set; }
+        public DbSet<Curso> Cursos { get; set; }
         public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<Local> Locais { get; set; }
 
