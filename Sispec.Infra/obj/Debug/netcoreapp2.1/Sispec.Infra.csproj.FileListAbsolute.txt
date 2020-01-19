@@ -1,0 +1,4 @@
+C:\Users\mateu\source\repos\Sispec\sispec_lemaf\Sispec.Infra\bin\Debug\netcoreapp2.1\Sispec.Domain.dll
+C:\Users\mateu\source\repos\Sispec\sispec_lemaf\Sispec.Infra\obj\Debug\netcoreapp2.1\Sispec.Infra.csprojAssemblyReference.cache
+C:\Users\mateu\source\repos\Sispec\sispec_lemaf\Sispec.Infra\obj\Debug\netcoreapp2.1\Sispec.Infra.AssemblyInfoInputs.cache
+C:\Users\mateu\source\repos\Sispec\sispec_lemaf\Sispec.Infra\obj\Debug\netcoreapp2.1\Sispec.Infra.AssemblyInfo.cs

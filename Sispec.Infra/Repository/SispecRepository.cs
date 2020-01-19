@@ -8,49 +8,40 @@ using System.Text;
 
 namespace Sispec.Infra.Repository
 {
-    public class SispecRepository<T> : IRepository<T> where T : BaseEntity
+    public class SispecRepository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
+        private SispecContext context;
 
-        public void Insert(T obj)
+        public SispecRepository()
         {
-            using (var context = new SispecContext())
-            {
-                context.Set<T>().Add(obj);
-            }
+            context = new SispecContext();
+        }
+        public void Insert(TEntity obj)
+        {
+            context.Set<TEntity>().Add(obj);
+
         }
 
-        public void Update(T obj)
+        public void Update(TEntity obj)
         {
-            using (var context = new SispecContext())
-            {
-                context.Entry(obj).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                context.SaveChanges();
-            }
+            context.Entry(obj).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            context.SaveChanges();
         }
 
         public void Remove(int id)
         {
-            using (var context = new SispecContext())
-            {
-                context.Set<T>().Remove(Select(id));
-                context.SaveChanges();
-            }
+            context.Set<TEntity>().Remove(Select(id));
+            context.SaveChanges();
         }
 
-        public IList<T> Select()
+        public IList<TEntity> Select()
         {
-            using (var context = new SispecContext())
-            {
-                return context.Set<T>().ToList();
-            }
+            return context.Set<TEntity>().ToList();
         }
 
-        public T Select(int id)
+        public TEntity Select(int id)
         {
-            using (var context = new SispecContext())
-            {
-                return context.Set<T>().Find(id);
-            }
+            return context.Set<TEntity>().Find(id);
         }
 
     }

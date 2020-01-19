@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Sispec.Domain.Entities
 {
-    public  abstract class BaseEntity
+    public abstract class BaseEntity
     {
-        public virtual int id { get; set; }
+        public virtual int Id { get; set; }
     }
 }
