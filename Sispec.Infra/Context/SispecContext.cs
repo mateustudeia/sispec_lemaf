@@ -13,6 +13,7 @@ namespace Sispec.Infra.Context
         public DbSet<Curso> Curso { get; set; }
         public DbSet<Pessoa> Pessoa { get; set; }
         public DbSet<Local> Local { get; set; }
+        public DbSet<IList<Pessoa>> Inscritos  { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseNpgsql("Host = localhost; Database = dbsispec; Username = tudeia; Password = 123456");

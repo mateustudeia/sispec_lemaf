@@ -9,6 +9,6 @@ namespace Sispec.Domain.Entities
         public virtual string Tema { get; set; }
         public virtual string Descricao { get; set; }
         public virtual Local Local { get; set; }
-        public virtual IList<Pessoa> Inscritos { get; set; }
+        public virtual Inscritos Inscritos { get; set; }
     }
-}
+} 
