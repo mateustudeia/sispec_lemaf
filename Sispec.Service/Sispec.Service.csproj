@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Sispec.Domain\Sispec.Domain.csproj" />
+    <ProjectReference Include="..\Sispec.Infra\Sispec.Infra.csproj" />
+  </ItemGroup>
+
 </Project>

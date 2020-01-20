@@ -7,9 +7,9 @@ namespace Sispec.Domain.Interfaces
 {
     public interface IService<T> where T : BaseEntity
     {
-        T Post<V>(T obj) where V : AbstractValidator<T>;
+        T Post(T obj) ;
 
-        T Put<V>(T obj) where V : AbstractValidator<T>;
+        T Put(T obj) ;
 
         void Delete(int id);
 

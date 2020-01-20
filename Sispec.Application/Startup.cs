@@ -34,7 +34,7 @@ namespace Sispec.Application
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
+            } 
             else
             {
                 app.UseHsts();

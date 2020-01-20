@@ -11,9 +11,17 @@ namespace Sispec.Infra.Mapping
     {
         public void Configure(EntityTypeBuilder<Pessoa> builder)
         {
-            builder.ToTable("Pessoa");
+
+            builder.ToTable("pessoa");
 
             builder.HasKey(c => c.Id);
+
+            builder.Property(c => c.Id)
+                .HasColumnName("id");
+
+            builder.Property(c => c.Nome)
+                .IsRequired()
+                .HasColumnName("nome");
 
             builder.Property(c => c.Cpf)
                 .IsRequired()
