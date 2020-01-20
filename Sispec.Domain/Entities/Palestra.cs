@@ -9,6 +9,6 @@ namespace Sispec.Domain.Entities
         public DateTime Data { get; set; }
         public DateTime tempoDuracao { get; set; }
         public Pessoa Palestrante { get; set; }
-        public virtual IList<Pessoa> Inscritos { get; set; }
+        
     }
 }

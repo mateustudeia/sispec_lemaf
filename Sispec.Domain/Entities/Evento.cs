@@ -9,7 +9,6 @@ namespace Sispec.Domain.Entities
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
         public Pessoa Organizador { get; set; }
-        public virtual IList<Pessoa> Inscritos { get; set; }
 
     }
 }
