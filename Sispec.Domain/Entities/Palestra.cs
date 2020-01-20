@@ -4,10 +4,11 @@ using System.Text;
 
 namespace Sispec.Domain.Entities
 {
-    public class Palestra : BasePec
+    public class Palestra : BasePalestraEventoCurso
     {
         public DateTime Data { get; set; }
         public DateTime tempoDuracao { get; set; }
         public Pessoa Palestrante { get; set; }
+        public virtual IList<Pessoa> Inscritos { get; set; }
     }
 }
