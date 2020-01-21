@@ -11,10 +11,6 @@ namespace Sispec.Infra.Mapping
     {
         public void Configure(EntityTypeBuilder<Entreterimento> builder)
         {
-            builder.ToTable("Entreterimento");
-            builder.HasKey(e => e.Id);
-            builder.Property(c => c.Id)
-                .HasColumnName("id");
             builder.HasOne(e => e.Organizador)
                 .WithMany(pe => pe.Entreterimento)
                 .HasForeignKey(e => e.IdPessoa);
