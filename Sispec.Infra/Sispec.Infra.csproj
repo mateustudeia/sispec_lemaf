@@ -11,6 +11,10 @@
     <Compile Remove="Migrations\20200121034203_Evolution_03.Designer.cs" />
     <Compile Remove="Migrations\20200121035516_Evolution_03.cs" />
     <Compile Remove="Migrations\20200121035516_Evolution_03.Designer.cs" />
+    <Compile Remove="Migrations\20200121195717_Evolution teste.cs" />
+    <Compile Remove="Migrations\20200121195717_Evolution teste.Designer.cs" />
+    <Compile Remove="Migrations\20200121200054_Evolution Teste.cs" />
+    <Compile Remove="Migrations\20200121200054_Evolution Teste.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

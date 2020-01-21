@@ -11,7 +11,6 @@ namespace Sispec.Infra.Mapping
     {
         public void Configure(EntityTypeBuilder<Evento> builder)
         {
-            builder.ToTable("Evento");
             builder.HasOne(e => e.Local)
                 .WithMany(l => l.Evento)
                 .HasForeignKey(e => e.IdLocal);
