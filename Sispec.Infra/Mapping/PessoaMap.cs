@@ -12,7 +12,7 @@ namespace Sispec.Infra.Mapping
         public void Configure(EntityTypeBuilder<Pessoa> builder)
         {
 
-            builder.ToTable("pessoa");
+            builder.ToTable("Pessoa");
 
             builder.HasKey(c => c.Id);
 
