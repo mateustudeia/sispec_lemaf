@@ -10,8 +10,8 @@ using Sispec.Infra.Context;
 namespace Sispec.Infra.Migrations
 {
     [DbContext(typeof(SispecContext))]
-    [Migration("20200121033126_Evolution_02")]
-    partial class Evolution_02
+    [Migration("20200122051311_Evolution_01")]
+    partial class Evolution_01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,27 +22,71 @@ namespace Sispec.Infra.Migrations
                 .HasAnnotation("ProductVersion", "2.1.14-servicing-32113")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
+            modelBuilder.Entity("Sispec.Domain.Entities.Curso", b =>
+                {
+                    b.Property<int>("EventoId")
+                        .HasColumnName("Curso_id");
+
+                    b.Property<DateTime>("DataFim");
+
+                    b.Property<DateTime>("DataInicio");
+
+                    b.Property<string>("FerramentasUtilizadas");
+
+                    b.Property<int>("IdPessoa");
+
+                    b.Property<string>("PreRequisitos");
+
+                    b.Property<DateTime>("TempoDuracao");
+
+                    b.HasKey("EventoId");
+
+                    b.HasIndex("IdPessoa");
+
+                    b.ToTable("Cursos");
+                });
+
+            modelBuilder.Entity("Sispec.Domain.Entities.Entreterimento", b =>
+                {
+                    b.Property<int>("EventoId")
+                        .HasColumnName("EntreterimentoId");
+
+                    b.Property<DateTime>("DataFim");
+
+                    b.Property<DateTime>("DataInicio");
+
+                    b.Property<int>("IdPessoa");
+
+                    b.HasKey("EventoId");
+
+                    b.HasIndex("IdPessoa");
+
+                    b.ToTable("Entreterimentos");
+                });
+
             modelBuilder.Entity("Sispec.Domain.Entities.Evento", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("IdEvento")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("EventoId");
 
                     b.Property<string>("Descricao");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
-
                     b.Property<int>("IdLocal");
+
+                    b.Property<int>("IdTipo");
 
                     b.Property<string>("Tema");
 
-                    b.HasKey("Id");
+                    b.Property<string>("TipoEvento")
+                        .IsRequired()
+                        .HasColumnName("Tipo");
+
+                    b.HasKey("IdEvento");
 
                     b.HasIndex("IdLocal");
 
-                    b.ToTable("Evento");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("Evento");
+                    b.ToTable("Eventos");
                 });
 
             modelBuilder.Entity("Sispec.Domain.Entities.InscritoEvento", b =>
@@ -70,6 +114,24 @@ namespace Sispec.Infra.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Locais");
+                });
+
+            modelBuilder.Entity("Sispec.Domain.Entities.Palestra", b =>
+                {
+                    b.Property<int>("EventoId")
+                        .HasColumnName("Palestra_id");
+
+                    b.Property<DateTime>("Data");
+
+                    b.Property<int>("IdPessoa");
+
+                    b.Property<DateTime>("tempoDuracao");
+
+                    b.HasKey("EventoId");
+
+                    b.HasIndex("IdPessoa");
+
+                    b.ToTable("Palestras");
                 });
 
             modelBuilder.Entity("Sispec.Domain.Entities.Pessoa", b =>
@@ -104,63 +166,28 @@ namespace Sispec.Infra.Migrations
 
             modelBuilder.Entity("Sispec.Domain.Entities.Curso", b =>
                 {
-                    b.HasBaseType("Sispec.Domain.Entities.Evento");
+                    b.HasOne("Sispec.Domain.Entities.Evento", "Evento")
+                        .WithOne("Curso")
+                        .HasForeignKey("Sispec.Domain.Entities.Curso", "EventoId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.Property<DateTime>("DataFim");
-
-                    b.Property<DateTime>("DataInicio");
-
-                    b.Property<string>("FerramentasUtilizadas");
-
-                    b.Property<int>("IdPessoa");
-
-                    b.Property<string>("PreRequisitos");
-
-                    b.Property<DateTime>("TempoDuracao");
-
-                    b.HasIndex("IdPessoa");
-
-                    b.ToTable("Curso");
-
-                    b.HasDiscriminator().HasValue("Curso");
+                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Orientador")
+                        .WithMany("Curso")
+                        .HasForeignKey("IdPessoa")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Sispec.Domain.Entities.Entreterimento", b =>
                 {
-                    b.HasBaseType("Sispec.Domain.Entities.Evento");
+                    b.HasOne("Sispec.Domain.Entities.Evento", "Evento")
+                        .WithOne("Entreterimento")
+                        .HasForeignKey("Sispec.Domain.Entities.Entreterimento", "EventoId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-                    b.Property<DateTime>("DataFim")
-                        .HasColumnName("Entreterimento_DataFim");
-
-                    b.Property<DateTime>("DataInicio")
-                        .HasColumnName("Entreterimento_DataInicio");
-
-                    b.Property<int>("IdPessoa")
-                        .HasColumnName("Entreterimento_IdPessoa");
-
-                    b.HasIndex("IdPessoa");
-
-                    b.ToTable("Entreterimento");
-
-                    b.HasDiscriminator().HasValue("Entreterimento");
-                });
-
-            modelBuilder.Entity("Sispec.Domain.Entities.Palestra", b =>
-                {
-                    b.HasBaseType("Sispec.Domain.Entities.Evento");
-
-                    b.Property<DateTime>("Data");
-
-                    b.Property<int>("IdPessoa")
-                        .HasColumnName("Palestra_IdPessoa");
-
-                    b.Property<DateTime>("tempoDuracao");
-
-                    b.HasIndex("IdPessoa");
-
-                    b.ToTable("Palestra");
-
-                    b.HasDiscriminator().HasValue("Palestra");
+                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Organizador")
+                        .WithMany("Entreterimento")
+                        .HasForeignKey("IdPessoa")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Sispec.Domain.Entities.Evento", b =>
@@ -184,24 +211,13 @@ namespace Sispec.Infra.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Sispec.Domain.Entities.Curso", b =>
-                {
-                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Orientador")
-                        .WithMany("Curso")
-                        .HasForeignKey("IdPessoa")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Sispec.Domain.Entities.Entreterimento", b =>
-                {
-                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Organizador")
-                        .WithMany("Entreterimento")
-                        .HasForeignKey("IdPessoa")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Sispec.Domain.Entities.Palestra", b =>
                 {
+                    b.HasOne("Sispec.Domain.Entities.Evento", "Evento")
+                        .WithOne("Palestra")
+                        .HasForeignKey("Sispec.Domain.Entities.Palestra", "EventoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Sispec.Domain.Entities.Pessoa", "Palestrante")
                         .WithMany("Palestra")
                         .HasForeignKey("IdPessoa")
