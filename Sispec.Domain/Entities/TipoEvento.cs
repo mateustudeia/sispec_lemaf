@@ -1,9 +1,11 @@
-﻿namespace Sispec.Domain.Entities
+﻿using System.Collections.Generic;
+
+namespace Sispec.Domain.Entities
 {
-    public enum TipoEvento
+    public class TipoEvento : BaseEntity
     {
-        Curso,
-        Entreterimento,
-        Palestra
+        public string DescricaoTipo { get; set; }
+
+        public IList<Evento> Evento { get; set; }
     };
 }
