@@ -23,7 +23,7 @@ namespace Sispec.Infra.Migrations
             modelBuilder.Entity("Sispec.Domain.Entities.Curso", b =>
                 {
                     b.Property<int>("EventoId")
-                        .HasColumnName("Curso_id");
+                        .HasColumnName("curso_id");
 
                     b.Property<DateTime>("DataFim");
 
@@ -41,13 +41,13 @@ namespace Sispec.Infra.Migrations
 
                     b.HasIndex("IdPessoa");
 
-                    b.ToTable("Cursos");
+                    b.ToTable("curso");
                 });
 
             modelBuilder.Entity("Sispec.Domain.Entities.Entreterimento", b =>
                 {
                     b.Property<int>("EventoId")
-                        .HasColumnName("EntreterimentoId");
+                        .HasColumnName("id_entreterimento");
 
                     b.Property<DateTime>("DataFim");
 
@@ -59,14 +59,14 @@ namespace Sispec.Infra.Migrations
 
                     b.HasIndex("IdPessoa");
 
-                    b.ToTable("Entreterimentos");
+                    b.ToTable("entreterimento");
                 });
 
             modelBuilder.Entity("Sispec.Domain.Entities.Evento", b =>
                 {
                     b.Property<int>("IdEvento")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("EventoId");
+                        .HasColumnName("id_evento");
 
                     b.Property<string>("Descricao");
 
@@ -76,15 +76,13 @@ namespace Sispec.Infra.Migrations
 
                     b.Property<string>("Tema");
 
-                    b.Property<string>("TipoEvento")
-                        .IsRequired()
-                        .HasColumnName("Tipo");
-
                     b.HasKey("IdEvento");
 
                     b.HasIndex("IdLocal");
 
-                    b.ToTable("Eventos");
+                    b.HasIndex("IdTipo");
+
+                    b.ToTable("evento");
                 });
 
             modelBuilder.Entity("Sispec.Domain.Entities.InscritoEvento", b =>
@@ -97,7 +95,7 @@ namespace Sispec.Infra.Migrations
 
                     b.HasIndex("IdEvento");
 
-                    b.ToTable("InscritoEvento");
+                    b.ToTable("inscrito_evento");
                 });
 
             modelBuilder.Entity("Sispec.Domain.Entities.Local", b =>
@@ -111,13 +109,13 @@ namespace Sispec.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Locais");
+                    b.ToTable("local");
                 });
 
             modelBuilder.Entity("Sispec.Domain.Entities.Palestra", b =>
                 {
                     b.Property<int>("EventoId")
-                        .HasColumnName("Palestra_id");
+                        .HasColumnName("palestra_id");
 
                     b.Property<DateTime>("Data");
 
@@ -129,7 +127,7 @@ namespace Sispec.Infra.Migrations
 
                     b.HasIndex("IdPessoa");
 
-                    b.ToTable("Palestras");
+                    b.ToTable("pelestra");
                 });
 
             modelBuilder.Entity("Sispec.Domain.Entities.Pessoa", b =>
@@ -159,7 +157,19 @@ namespace Sispec.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pessoa");
+                    b.ToTable("pessoa");
+                });
+
+            modelBuilder.Entity("Sispec.Domain.Entities.TipoEvento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("DescricaoTipo");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("tipo_evento");
                 });
 
             modelBuilder.Entity("Sispec.Domain.Entities.Curso", b =>
@@ -193,6 +203,11 @@ namespace Sispec.Infra.Migrations
                     b.HasOne("Sispec.Domain.Entities.Local", "Local")
                         .WithMany("Evento")
                         .HasForeignKey("IdLocal")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Sispec.Domain.Entities.TipoEvento", "TipoEvento")
+                        .WithMany("Evento")
+                        .HasForeignKey("IdTipo")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

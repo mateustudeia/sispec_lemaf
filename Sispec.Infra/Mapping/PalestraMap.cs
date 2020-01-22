@@ -11,10 +11,11 @@ namespace Sispec.Infra.Mapping
     {
         public void Configure(EntityTypeBuilder<Palestra> builder)
         {
+            builder.ToTable("pelestra");
             builder.HasKey(pa => pa.EventoId);
 
             builder.Property(pa => pa.EventoId)
-                .HasColumnName("Palestra_id");
+                .HasColumnName("palestra_id");
 
             builder.HasOne(pa => pa.Palestrante)
                 .WithMany(pe => pe.Palestra)

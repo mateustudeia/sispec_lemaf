@@ -11,6 +11,7 @@ namespace Sispec.Infra.Mapping
     {
         public void Configure(EntityTypeBuilder<InscritoEvento> builder)
         {
+            builder.ToTable("inscrito_evento");
             builder.HasKey(ie => new { ie.IdPessoa, ie.IdEvento });
             builder.HasOne(ie => ie.Pessoa)
                 .WithMany(i => i.Inscritos)

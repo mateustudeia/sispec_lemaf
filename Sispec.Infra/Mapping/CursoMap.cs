@@ -11,11 +11,12 @@ namespace Sispec.Infra.Mapping
     {
         public void Configure(EntityTypeBuilder<Curso> builder)
         {
-            
+            builder.ToTable("curso");
+
             builder.HasKey(c => c.EventoId);
 
             builder.Property(c => c.EventoId)
-                .HasColumnName("Curso_id");
+                .HasColumnName("curso_id");
             
             builder.HasOne(c => c.Orientador)
                 .WithMany(pe => pe.Curso)

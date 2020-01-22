@@ -12,7 +12,7 @@ namespace Sispec.Infra.Migrations
                 name: "sispec");
 
             migrationBuilder.CreateTable(
-                name: "Locais",
+                name: "local",
                 schema: "sispec",
                 columns: table => new
                 {
@@ -23,7 +23,7 @@ namespace Sispec.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Locais", x => x.Id);
+                    table.PrimaryKey("PK_local", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -45,36 +45,56 @@ namespace Sispec.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Eventos",
+                name: "tipo_evento",
                 schema: "sispec",
                 columns: table => new
                 {
-                    EventoId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    DescricaoTipo = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tipo_evento", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "evento",
+                schema: "sispec",
+                columns: table => new
+                {
+                    id_evento = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Tema = table.Column<string>(nullable: true),
                     Descricao = table.Column<string>(nullable: true),
                     IdLocal = table.Column<int>(nullable: false),
-                    IdTipo = table.Column<int>(nullable: false),
-                    Tipo = table.Column<string>(nullable: false)
+                    IdTipo = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Eventos", x => x.EventoId);
+                    table.PrimaryKey("PK_evento", x => x.id_evento);
                     table.ForeignKey(
-                        name: "FK_Eventos_Locais_IdLocal",
+                        name: "FK_evento_local_IdLocal",
                         column: x => x.IdLocal,
                         principalSchema: "sispec",
-                        principalTable: "Locais",
+                        principalTable: "local",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_evento_tipo_evento_IdTipo",
+                        column: x => x.IdTipo,
+                        principalSchema: "sispec",
+                        principalTable: "tipo_evento",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cursos",
+                name: "curso",
                 schema: "sispec",
                 columns: table => new
                 {
-                    Curso_id = table.Column<int>(nullable: false),
+                    curso_id = table.Column<int>(nullable: false),
                     DataInicio = table.Column<DateTime>(nullable: false),
                     DataFim = table.Column<DateTime>(nullable: false),
                     TempoDuracao = table.Column<DateTime>(nullable: false),
@@ -84,16 +104,16 @@ namespace Sispec.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cursos", x => x.Curso_id);
+                    table.PrimaryKey("PK_curso", x => x.curso_id);
                     table.ForeignKey(
-                        name: "FK_Cursos_Eventos_Curso_id",
-                        column: x => x.Curso_id,
+                        name: "FK_curso_evento_curso_id",
+                        column: x => x.curso_id,
                         principalSchema: "sispec",
-                        principalTable: "Eventos",
-                        principalColumn: "EventoId",
+                        principalTable: "evento",
+                        principalColumn: "id_evento",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Cursos_pessoa_IdPessoa",
+                        name: "FK_curso_pessoa_IdPessoa",
                         column: x => x.IdPessoa,
                         principalSchema: "sispec",
                         principalTable: "pessoa",
@@ -102,27 +122,27 @@ namespace Sispec.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Entreterimentos",
+                name: "entreterimento",
                 schema: "sispec",
                 columns: table => new
                 {
-                    EntreterimentoId = table.Column<int>(nullable: false),
+                    id_entreterimento = table.Column<int>(nullable: false),
                     DataInicio = table.Column<DateTime>(nullable: false),
                     DataFim = table.Column<DateTime>(nullable: false),
                     IdPessoa = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Entreterimentos", x => x.EntreterimentoId);
+                    table.PrimaryKey("PK_entreterimento", x => x.id_entreterimento);
                     table.ForeignKey(
-                        name: "FK_Entreterimentos_Eventos_EntreterimentoId",
-                        column: x => x.EntreterimentoId,
+                        name: "FK_entreterimento_evento_id_entreterimento",
+                        column: x => x.id_entreterimento,
                         principalSchema: "sispec",
-                        principalTable: "Eventos",
-                        principalColumn: "EventoId",
+                        principalTable: "evento",
+                        principalColumn: "id_evento",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Entreterimentos_pessoa_IdPessoa",
+                        name: "FK_entreterimento_pessoa_IdPessoa",
                         column: x => x.IdPessoa,
                         principalSchema: "sispec",
                         principalTable: "pessoa",
@@ -131,7 +151,7 @@ namespace Sispec.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "InscritoEvento",
+                name: "inscrito_evento",
                 schema: "sispec",
                 columns: table => new
                 {
@@ -140,16 +160,16 @@ namespace Sispec.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InscritoEvento", x => new { x.IdPessoa, x.IdEvento });
+                    table.PrimaryKey("PK_inscrito_evento", x => new { x.IdPessoa, x.IdEvento });
                     table.ForeignKey(
-                        name: "FK_InscritoEvento_Eventos_IdEvento",
+                        name: "FK_inscrito_evento_evento_IdEvento",
                         column: x => x.IdEvento,
                         principalSchema: "sispec",
-                        principalTable: "Eventos",
-                        principalColumn: "EventoId",
+                        principalTable: "evento",
+                        principalColumn: "id_evento",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_InscritoEvento_pessoa_IdPessoa",
+                        name: "FK_inscrito_evento_pessoa_IdPessoa",
                         column: x => x.IdPessoa,
                         principalSchema: "sispec",
                         principalTable: "pessoa",
@@ -158,27 +178,27 @@ namespace Sispec.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Palestras",
+                name: "pelestra",
                 schema: "sispec",
                 columns: table => new
                 {
-                    Palestra_id = table.Column<int>(nullable: false),
+                    palestra_id = table.Column<int>(nullable: false),
                     Data = table.Column<DateTime>(nullable: false),
                     tempoDuracao = table.Column<DateTime>(nullable: false),
                     IdPessoa = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Palestras", x => x.Palestra_id);
+                    table.PrimaryKey("PK_pelestra", x => x.palestra_id);
                     table.ForeignKey(
-                        name: "FK_Palestras_Eventos_Palestra_id",
-                        column: x => x.Palestra_id,
+                        name: "FK_pelestra_evento_palestra_id",
+                        column: x => x.palestra_id,
                         principalSchema: "sispec",
-                        principalTable: "Eventos",
-                        principalColumn: "EventoId",
+                        principalTable: "evento",
+                        principalColumn: "id_evento",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Palestras_pessoa_IdPessoa",
+                        name: "FK_pelestra_pessoa_IdPessoa",
                         column: x => x.IdPessoa,
                         principalSchema: "sispec",
                         principalTable: "pessoa",
@@ -187,56 +207,62 @@ namespace Sispec.Infra.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cursos_IdPessoa",
+                name: "IX_curso_IdPessoa",
                 schema: "sispec",
-                table: "Cursos",
+                table: "curso",
                 column: "IdPessoa");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Entreterimentos_IdPessoa",
+                name: "IX_entreterimento_IdPessoa",
                 schema: "sispec",
-                table: "Entreterimentos",
+                table: "entreterimento",
                 column: "IdPessoa");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Eventos_IdLocal",
+                name: "IX_evento_IdLocal",
                 schema: "sispec",
-                table: "Eventos",
+                table: "evento",
                 column: "IdLocal");
 
             migrationBuilder.CreateIndex(
-                name: "IX_InscritoEvento_IdEvento",
+                name: "IX_evento_IdTipo",
                 schema: "sispec",
-                table: "InscritoEvento",
+                table: "evento",
+                column: "IdTipo");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_inscrito_evento_IdEvento",
+                schema: "sispec",
+                table: "inscrito_evento",
                 column: "IdEvento");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Palestras_IdPessoa",
+                name: "IX_pelestra_IdPessoa",
                 schema: "sispec",
-                table: "Palestras",
+                table: "pelestra",
                 column: "IdPessoa");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Cursos",
+                name: "curso",
                 schema: "sispec");
 
             migrationBuilder.DropTable(
-                name: "Entreterimentos",
+                name: "entreterimento",
                 schema: "sispec");
 
             migrationBuilder.DropTable(
-                name: "InscritoEvento",
+                name: "inscrito_evento",
                 schema: "sispec");
 
             migrationBuilder.DropTable(
-                name: "Palestras",
+                name: "pelestra",
                 schema: "sispec");
 
             migrationBuilder.DropTable(
-                name: "Eventos",
+                name: "evento",
                 schema: "sispec");
 
             migrationBuilder.DropTable(
@@ -244,7 +270,11 @@ namespace Sispec.Infra.Migrations
                 schema: "sispec");
 
             migrationBuilder.DropTable(
-                name: "Locais",
+                name: "local",
+                schema: "sispec");
+
+            migrationBuilder.DropTable(
+                name: "tipo_evento",
                 schema: "sispec");
         }
     }
