@@ -1,8 +1,9 @@
-<template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-  </div>
+<template lang="pug">
+  div(id='app')
+
+    img(src="./assets/logo.png")
+    h1(v-for="msg of msgs") {{ msg }}
+
 </template>
 
 <script>
@@ -10,7 +11,7 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Bem-vindo ao SisE LEMAF!'
+      msgs: ["Bem-vindo ao SisE LEMAF!","Sistema de Cadastro de Eventos do LEMAF"]
     }
   }
 }
