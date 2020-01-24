@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200122182722_Evolutin_01.cs" />
-    <Compile Remove="Migrations\20200122182722_Evolutin_01.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Repository\" />
   </ItemGroup>
 

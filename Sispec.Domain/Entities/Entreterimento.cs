@@ -4,10 +4,8 @@ using System.Text;
 
 namespace Sispec.Domain.Entities
 {
-    public class Entreterimento
+    public class Entreterimento : BaseEntity
     {
-        public int EventoId { get; set; }
-
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
         public int IdPessoa { get; set; }

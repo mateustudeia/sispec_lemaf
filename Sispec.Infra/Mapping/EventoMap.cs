@@ -13,8 +13,8 @@ namespace Sispec.Infra.Mapping
         {
             builder.ToTable("evento");
 
-            builder.HasKey(e => e.IdEvento);
-            builder.Property(e => e.IdEvento)
+            builder.HasKey(e => e.Id);
+            builder.Property(e => e.Id)
                 .HasColumnName("id_evento"); ;
 
             builder.HasOne(e => e.Local)

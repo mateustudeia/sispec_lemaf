@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Sispec.Infra.Migrations
 {
-    public partial class Evolution_01 : Migration
+    public partial class Migration01 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -35,8 +35,8 @@ namespace Sispec.Infra.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     nome = table.Column<string>(nullable: false),
                     cpf = table.Column<string>(nullable: false),
-                    contato = table.Column<string>(nullable: false),
-                    email = table.Column<string>(nullable: false),
+                    contato = table.Column<string>(nullable: true),
+                    email = table.Column<string>(nullable: true),
                     data_nascimento = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>

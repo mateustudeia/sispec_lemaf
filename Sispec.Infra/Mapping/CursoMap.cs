@@ -13,11 +13,15 @@ namespace Sispec.Infra.Mapping
         {
             builder.ToTable("curso");
 
-            builder.HasKey(c => c.EventoId);
+            builder.HasKey(c => c.Id);
 
-            builder.Property(c => c.EventoId)
+            builder.Property(c => c.Id)
                 .HasColumnName("curso_id");
-            
+
+            builder.HasOne(c => c.Evento)
+                .WithOne(e => e.Curso)
+                .HasForeignKey<Curso>(c => c.Id);
+
             builder.HasOne(c => c.Orientador)
                 .WithMany(pe => pe.Curso)
                 .HasForeignKey(c => c.IdPessoa);

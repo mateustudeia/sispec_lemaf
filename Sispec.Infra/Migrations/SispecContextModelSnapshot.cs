@@ -22,7 +22,7 @@ namespace Sispec.Infra.Migrations
 
             modelBuilder.Entity("Sispec.Domain.Entities.Curso", b =>
                 {
-                    b.Property<int>("EventoId")
+                    b.Property<int>("Id")
                         .HasColumnName("curso_id");
 
                     b.Property<DateTime>("DataFim");
@@ -37,7 +37,7 @@ namespace Sispec.Infra.Migrations
 
                     b.Property<DateTime>("TempoDuracao");
 
-                    b.HasKey("EventoId");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdPessoa");
 
@@ -46,7 +46,7 @@ namespace Sispec.Infra.Migrations
 
             modelBuilder.Entity("Sispec.Domain.Entities.Entreterimento", b =>
                 {
-                    b.Property<int>("EventoId")
+                    b.Property<int>("Id")
                         .HasColumnName("id_entreterimento");
 
                     b.Property<DateTime>("DataFim");
@@ -55,7 +55,7 @@ namespace Sispec.Infra.Migrations
 
                     b.Property<int>("IdPessoa");
 
-                    b.HasKey("EventoId");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdPessoa");
 
@@ -64,7 +64,7 @@ namespace Sispec.Infra.Migrations
 
             modelBuilder.Entity("Sispec.Domain.Entities.Evento", b =>
                 {
-                    b.Property<int>("IdEvento")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("id_evento");
 
@@ -76,7 +76,7 @@ namespace Sispec.Infra.Migrations
 
                     b.Property<string>("Tema");
 
-                    b.HasKey("IdEvento");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdLocal");
 
@@ -114,7 +114,7 @@ namespace Sispec.Infra.Migrations
 
             modelBuilder.Entity("Sispec.Domain.Entities.Palestra", b =>
                 {
-                    b.Property<int>("EventoId")
+                    b.Property<int>("Id")
                         .HasColumnName("palestra_id");
 
                     b.Property<DateTime>("Data");
@@ -123,7 +123,7 @@ namespace Sispec.Infra.Migrations
 
                     b.Property<DateTime>("tempoDuracao");
 
-                    b.HasKey("EventoId");
+                    b.HasKey("Id");
 
                     b.HasIndex("IdPessoa");
 
@@ -137,7 +137,6 @@ namespace Sispec.Infra.Migrations
                         .HasColumnName("id");
 
                     b.Property<string>("Contato")
-                        .IsRequired()
                         .HasColumnName("contato");
 
                     b.Property<string>("Cpf")
@@ -148,7 +147,6 @@ namespace Sispec.Infra.Migrations
                         .HasColumnName("data_nascimento");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnName("email");
 
                     b.Property<string>("Nome")
@@ -176,7 +174,7 @@ namespace Sispec.Infra.Migrations
                 {
                     b.HasOne("Sispec.Domain.Entities.Evento", "Evento")
                         .WithOne("Curso")
-                        .HasForeignKey("Sispec.Domain.Entities.Curso", "EventoId")
+                        .HasForeignKey("Sispec.Domain.Entities.Curso", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Sispec.Domain.Entities.Pessoa", "Orientador")
@@ -189,7 +187,7 @@ namespace Sispec.Infra.Migrations
                 {
                     b.HasOne("Sispec.Domain.Entities.Evento", "Evento")
                         .WithOne("Entreterimento")
-                        .HasForeignKey("Sispec.Domain.Entities.Entreterimento", "EventoId")
+                        .HasForeignKey("Sispec.Domain.Entities.Entreterimento", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Sispec.Domain.Entities.Pessoa", "Organizador")
@@ -228,7 +226,7 @@ namespace Sispec.Infra.Migrations
                 {
                     b.HasOne("Sispec.Domain.Entities.Evento", "Evento")
                         .WithOne("Palestra")
-                        .HasForeignKey("Sispec.Domain.Entities.Palestra", "EventoId")
+                        .HasForeignKey("Sispec.Domain.Entities.Palestra", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Sispec.Domain.Entities.Pessoa", "Palestrante")

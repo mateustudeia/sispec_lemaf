@@ -4,10 +4,8 @@ using System.Text;
 
 namespace Sispec.Domain.Entities
 {
-    public class Curso
+    public class Curso : BaseEntity
     {
-        public int EventoId { get; set; }
-
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
         public DateTime TempoDuracao { get; set; }
@@ -17,6 +15,7 @@ namespace Sispec.Domain.Entities
         public Pessoa Orientador { get; set; }
 
         public virtual Evento Evento { get; set; }
+
 
     }
 }

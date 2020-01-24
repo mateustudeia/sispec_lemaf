@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Sispec.Domain.Entities
 {
-    public class Evento 
+    public class Evento : BaseEntity
     {
-        public int IdEvento { get; set; }
         public virtual string Tema { get; set; }
         public virtual string Descricao { get; set; }
         public virtual int IdLocal { get; set; }
