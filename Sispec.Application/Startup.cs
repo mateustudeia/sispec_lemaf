@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using VueCliMiddleware;
 
 namespace Sispec.Application
 {
@@ -26,6 +27,10 @@ namespace Sispec.Application
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "clientapp";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +46,20 @@ namespace Sispec.Application
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseMvc();
+
+            app.UseSpa(spa =>
+            {
+                if (env.IsDevelopment())
+                    spa.Options.SourcePath = "clientapp";
+                else
+                    spa.Options.SourcePath = "dist";
+                if (env.IsDevelopment())
+                {
+                    spa.UseVueCli(npmScript:"serve");
+                }
+            });
         }
     }
 }
