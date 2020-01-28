@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispec.Infra", "Sispec.Infr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispec.Service", "Sispec.Service\Sispec.Service.csproj", "{8C099368-8561-42DD-897F-AEF25ED303B1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sispec.ClientApp", "Sispec.ClientApp", "{C3E19721-76E2-4547-B1F5-8E8798B801AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
