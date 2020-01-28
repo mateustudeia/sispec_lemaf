@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{C8A141DC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{8592A378-C6A0-47B2-A92B-DF57013BF4D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sispec.Application", "Sispec.Application\Sispec.Application.csproj", "{235985DA-4621-4E29-8578-CCE9FA62B4B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispec.Application", "Sispec.Application\Sispec.Application.csproj", "{235985DA-4621-4E29-8578-CCE9FA62B4B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sispec.Domain", "Sispec.Domain\Sispec.Domain.csproj", "{A6FE015A-C7E6-4FF2-8F19-34EF4FA6D54C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispec.Domain", "Sispec.Domain\Sispec.Domain.csproj", "{A6FE015A-C7E6-4FF2-8F19-34EF4FA6D54C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sispec.Infra", "Sispec.Infra\Sispec.Infra.csproj", "{FEBE4519-C9DA-4F8D-B7ED-BFE68A6D06EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispec.Infra", "Sispec.Infra\Sispec.Infra.csproj", "{FEBE4519-C9DA-4F8D-B7ED-BFE68A6D06EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sispec.Service", "Sispec.Service\Sispec.Service.csproj", "{8C099368-8561-42DD-897F-AEF25ED303B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sispec.Service", "Sispec.Service\Sispec.Service.csproj", "{8C099368-8561-42DD-897F-AEF25ED303B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
