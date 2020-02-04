@@ -12,18 +12,19 @@ namespace Sispec.Application.Controllers
     [ApiController]
     public class EventoControler : Controller
     {
+        private EventoService _eventoService;
         private SispecService<Evento> service = new SispecService<Evento>();
 
         [HttpGet]
         public ActionResult<IList<Evento>> Get()
         {
-            return Ok(service.Get());
+            return Ok(_eventoService.Get());
         }
 
         [HttpGet("{id}")]
         public ActionResult<Evento> Get(int id)
         {
-            return Ok(service.Get(id));
+            return Ok(_eventoService.EventoById(id));
         }
 
         [HttpPost]

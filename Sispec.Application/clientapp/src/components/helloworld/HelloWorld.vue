@@ -1,10 +1,13 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      Sistema de cadastro de eventos do Lemaf. Deselvolvido em DotNet Core 2.1 e VueJs<br>
-    </p>
-  </div>
+  <form class="form-inline" action=''>
+    <div class="hello">
+      <h1>{{ msg }}</h1>
+      <p>
+        Sistema de cadastro de eventos do Lemaf. Deselvolvido em DotNet Core 2.1 e VueJs<br>
+      </p>
+      <button type="submit" class="btn btn-primary mb-2">Eventos Disponíves</button>
+    </div>
+  </form>
 </template>
 
 <script>
@@ -12,6 +15,9 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  created(){
+
   }
 }
 </script>
