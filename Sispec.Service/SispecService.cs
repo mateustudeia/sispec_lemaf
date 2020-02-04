@@ -13,14 +13,14 @@ namespace Sispec.Service
         public void Delete(int id)
         {
             if (id == 0)
-                throw new ArgumentException("O id não pode ser zero");
+                throw new ArgumentException("The id can't be zero.");
             repository.Remove(id);
         }
 
         public T Get(int id)
         {
             if (id == 0)
-                throw new ArgumentException("O id não pode ser zero");
+                throw new ArgumentException("The id can't be zero.");
             return repository.Select(id);
         }
 
