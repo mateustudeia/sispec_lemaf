@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Sispec.Infra.Context;
@@ -9,9 +10,10 @@ using Sispec.Infra.Context;
 namespace Sispec.Infra.Migrations
 {
     [DbContext(typeof(SispecContext))]
-    partial class SispecContextModelSnapshot : ModelSnapshot
+    [Migration("20200204141305_Evolution_02")]
+    partial class Evolution_02
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -127,7 +129,7 @@ namespace Sispec.Infra.Migrations
 
                     b.HasIndex("Palestrante");
 
-                    b.ToTable("palestra");
+                    b.ToTable("pelestra");
                 });
 
             modelBuilder.Entity("Sispec.Domain.Entities.Pessoa", b =>

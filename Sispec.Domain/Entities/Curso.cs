@@ -8,11 +8,11 @@ namespace Sispec.Domain.Entities
     {
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
-        public DateTime TempoDuracao { get; set; }
+        public string TempoDuracao { get; set; }
         public string PreRequisitos { get; set; }
         public string FerramentasUtilizadas { get; set; }
-        public int IdPessoa { get; set; }
-        public Pessoa Orientador { get; set; }
+        public int Orientador { get; set; }
+        public Pessoa Pessoa { get; set; }
 
         public virtual Evento Evento { get; set; }
 

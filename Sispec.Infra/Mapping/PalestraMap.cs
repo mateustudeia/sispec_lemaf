@@ -11,7 +11,7 @@ namespace Sispec.Infra.Mapping
     {
         public void Configure(EntityTypeBuilder<Palestra> builder)
         {
-            builder.ToTable("pelestra");
+            builder.ToTable("palestra");
             builder.HasKey(pa => pa.Id);
 
             builder.Property(pa => pa.Id)
@@ -21,9 +21,9 @@ namespace Sispec.Infra.Mapping
                 .WithOne(e => e.Palestra)
                 .HasForeignKey<Palestra>(p => p.Id);
 
-            builder.HasOne(pa => pa.Palestrante)
+            builder.HasOne(pa => pa.Pessoa)
                 .WithMany(pe => pe.Palestra)
-                .HasForeignKey(pa => pa.IdPessoa);
+                .HasForeignKey(pa => pa.Palestrante);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Sispec.Infra.Context;
@@ -9,9 +10,10 @@ using Sispec.Infra.Context;
 namespace Sispec.Infra.Migrations
 {
     [DbContext(typeof(SispecContext))]
-    partial class SispecContextModelSnapshot : ModelSnapshot
+    [Migration("20200204132536_Evolution_01")]
+    partial class Evolution_01
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,7 +33,7 @@ namespace Sispec.Infra.Migrations
 
                     b.Property<string>("FerramentasUtilizadas");
 
-                    b.Property<int>("Orientador");
+                    b.Property<int>("IdPessoa");
 
                     b.Property<string>("PreRequisitos");
 
@@ -39,7 +41,7 @@ namespace Sispec.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Orientador");
+                    b.HasIndex("IdPessoa");
 
                     b.ToTable("curso");
                 });
@@ -53,11 +55,11 @@ namespace Sispec.Infra.Migrations
 
                     b.Property<DateTime>("DataInicio");
 
-                    b.Property<int>("Organizador");
+                    b.Property<int>("IdPessoa");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Organizador");
+                    b.HasIndex("IdPessoa");
 
                     b.ToTable("entreterimento");
                 });
@@ -119,15 +121,15 @@ namespace Sispec.Infra.Migrations
 
                     b.Property<DateTime>("Data");
 
-                    b.Property<int>("Palestrante");
+                    b.Property<int>("IdPessoa");
 
                     b.Property<DateTime>("tempoDuracao");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Palestrante");
+                    b.HasIndex("IdPessoa");
 
-                    b.ToTable("palestra");
+                    b.ToTable("pelestra");
                 });
 
             modelBuilder.Entity("Sispec.Domain.Entities.Pessoa", b =>
@@ -177,9 +179,9 @@ namespace Sispec.Infra.Migrations
                         .HasForeignKey("Sispec.Domain.Entities.Curso", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Pessoa")
+                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Orientador")
                         .WithMany("Curso")
-                        .HasForeignKey("Orientador")
+                        .HasForeignKey("IdPessoa")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -190,9 +192,9 @@ namespace Sispec.Infra.Migrations
                         .HasForeignKey("Sispec.Domain.Entities.Entreterimento", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Pessoa")
+                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Organizador")
                         .WithMany("Entreterimento")
-                        .HasForeignKey("Organizador")
+                        .HasForeignKey("IdPessoa")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -229,9 +231,9 @@ namespace Sispec.Infra.Migrations
                         .HasForeignKey("Sispec.Domain.Entities.Palestra", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Pessoa")
+                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Palestrante")
                         .WithMany("Palestra")
-                        .HasForeignKey("Palestrante")
+                        .HasForeignKey("IdPessoa")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

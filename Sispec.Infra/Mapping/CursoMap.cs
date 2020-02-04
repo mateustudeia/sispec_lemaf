@@ -22,9 +22,9 @@ namespace Sispec.Infra.Mapping
                 .WithOne(e => e.Curso)
                 .HasForeignKey<Curso>(c => c.Id);
 
-            builder.HasOne(c => c.Orientador)
+            builder.HasOne(c => c.Pessoa)
                 .WithMany(pe => pe.Curso)
-                .HasForeignKey(c => c.IdPessoa);
+                .HasForeignKey(c => c.Orientador);
         }
     }
 }
