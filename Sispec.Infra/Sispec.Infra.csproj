@@ -5,10 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200124195734_Migration01.cs" />
+    <Compile Remove="Migrations\20200124195734_Migration01.Designer.cs" />
     <Compile Remove="Migrations\20200204101935_Evolution_02.cs" />
     <Compile Remove="Migrations\20200204101935_Evolution_02.Designer.cs" />
     <Compile Remove="Migrations\20200204102059_Evolution_02.cs" />
     <Compile Remove="Migrations\20200204102059_Evolution_02.Designer.cs" />
+    <Compile Remove="Migrations\20200204103408_Evolution_01.cs" />
+    <Compile Remove="Migrations\20200204103408_Evolution_01.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
