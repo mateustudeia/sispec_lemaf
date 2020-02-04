@@ -24,7 +24,7 @@ namespace Sispec.Infra.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("sisEpec");
+            modelBuilder.HasDefaultSchema("sispec");
             modelBuilder.ApplyConfiguration(new EventoMap()); 
             modelBuilder.ApplyConfiguration(new PalestraMap());
             modelBuilder.ApplyConfiguration(new CursoMap());
