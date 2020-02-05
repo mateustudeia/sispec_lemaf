@@ -19,6 +19,7 @@ namespace Sispec.Infra.Repository
         public void Insert(TEntity obj)
         {
             context.Set<TEntity>().Add(obj);
+            context.SaveChanges();
 
         }
 

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Sispec.Domain.Entities;
 
 namespace Sispec.Service
 {
-    class CursoService
+    public class CursoService : SispecService<Curso>
     {
     }
 }

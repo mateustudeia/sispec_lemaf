@@ -8,5 +8,6 @@ namespace Sispec.Service
     class PalestraService : SispecService<Palestra>
     {
 
+
     }
 }

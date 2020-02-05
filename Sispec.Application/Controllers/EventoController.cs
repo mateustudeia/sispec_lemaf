@@ -8,9 +8,11 @@ using System.Threading.Tasks;
 
 namespace Sispec.Application.Controllers
 {
-    public class EventoControler : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EventoController : ControllerBase
     {
-        private EventoService _eventoService;
+        private EventoService _eventoService = new EventoService();
         private SispecService<Evento> service = new SispecService<Evento>();
 
         [HttpGet]
@@ -18,12 +20,6 @@ namespace Sispec.Application.Controllers
         {
             return Ok(_eventoService.Get());
         }
-
-        public IActionResult Listar(int id)
-        {
-            return View(_eventoService.EventoById(id));
-        }
-
 
         [HttpGet("{id}")]
         public ActionResult<Evento> Get(int id)
@@ -34,7 +30,9 @@ namespace Sispec.Application.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Evento item)
         {
-            service.Post(item);
+
+            _eventoService.Inserir(item);
+
             return Ok("Adicionado!");
         }
 

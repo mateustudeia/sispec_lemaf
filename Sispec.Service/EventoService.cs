@@ -64,5 +64,23 @@ namespace Sispec.Service
             return _palestra;
         }
 
+        public void Inserir(Evento evento)
+        {
+            
+            if (evento.IdTipo == 1)
+            {
+                PalestraService palestra = new PalestraService();
+                palestra.Post(evento.Palestra);
+            } else if (evento.IdTipo == 2)
+            {
+                EntreterimentoService entreterimento = new EntreterimentoService();
+                entreterimento.Post(evento.Entreterimento);
+            } else
+            {
+                CursoService curso = new CursoService();
+                curso.Post(evento.Curso);
+            }
+        }
+
     }
 }

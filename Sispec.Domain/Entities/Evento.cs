@@ -14,7 +14,7 @@ namespace Sispec.Domain.Entities
 
         public virtual Local Local { get; set; }
         public virtual TipoEvento TipoEvento { get; set; }
-        public Curso Curso { get; set; }
+        public virtual Curso Curso { get; set; }
         public virtual Palestra Palestra { get; set; }
         public virtual Entreterimento Entreterimento { get; set; }
     }

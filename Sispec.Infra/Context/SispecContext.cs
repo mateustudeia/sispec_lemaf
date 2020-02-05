@@ -19,12 +19,18 @@ namespace Sispec.Infra.Context
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseNpgsql("Host = localhost; Database = dbsispec; Username = postgres; Password = postgres");
+        {
+            optionsBuilder
+                //.UseLazyLoadingProxies()
+                .UseNpgsql("Host = localhost; Database = dbsispec; Username = postgres; Password = postgre");
             //=> optionsBuilder.UseNpgsql("Host = localhost; Database = sispec; Username = postgres; Password = postgre");
+
+            
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("sispec");
+            modelBuilder.HasDefaultSchema("sisEpec");
             modelBuilder.ApplyConfiguration(new EventoMap()); 
             modelBuilder.ApplyConfiguration(new PalestraMap());
             modelBuilder.ApplyConfiguration(new CursoMap());

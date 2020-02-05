@@ -5,7 +5,8 @@ using System.Text;
 
 namespace Sispec.Service
 {
-    class EntreterimentoService : SispecService<Entreterimento>
+    public class InscritoService : SispecService<InscritoEvento>
     {
+
     }
 }

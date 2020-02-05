@@ -15,11 +15,12 @@ namespace Sispec.Infra.Mapping
 
             builder.HasKey(e => e.Id);
             builder.Property(e => e.Id)
-                .HasColumnName("id_evento"); ;
+                .HasColumnName("id_evento");
 
             builder.HasOne(e => e.Local)
                 .WithMany(l => l.Evento)
                 .HasForeignKey(e => e.IdLocal);
+
 
             builder.HasOne(e => e.TipoEvento)
                 .WithMany(te => te.Evento)
