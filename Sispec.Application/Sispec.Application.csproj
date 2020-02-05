@@ -5,20 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="VueCliMiddleware" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Sispec.Domain\Sispec.Domain.csproj" />
     <ProjectReference Include="..\Sispec.Service\Sispec.Service.csproj" />
   </ItemGroup>
-
-  <ProjectExtensions><VisualStudio><UserProperties clientapp_4package_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
