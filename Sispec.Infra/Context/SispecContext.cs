@@ -13,7 +13,7 @@ namespace Sispec.Infra.Context
         public DbSet<Palestra> Palestra { get; set; }
         public DbSet<Curso> Curso { get; set; }
         public DbSet<Entreterimento> Entreterimento { get; set; }
-        public DbSet<Pessoa> Pessoa { get; set; }
+        public virtual DbSet<Pessoa> Pessoa { get; set; }
         public DbSet<Local> Local { get; set; }
         public DbSet<TipoEvento> TipoEvento { get; set; }
 
@@ -21,7 +21,7 @@ namespace Sispec.Infra.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder
-                //.UseLazyLoadingProxies()
+                .UseLazyLoadingProxies()
                 .UseNpgsql("Host = localhost; Database = dbsispec; Username = postgres; Password = postgre");
             //=> optionsBuilder.UseNpgsql("Host = localhost; Database = sispec; Username = postgres; Password = postgre");
 

@@ -6,6 +6,6 @@ namespace Sispec.Domain.Entities
     {
         public string DescricaoTipo { get; set; }
 
-        public IList<Evento> Evento { get; set; }
+        public virtual IList<Evento> Evento { get; set; }
     };
 }

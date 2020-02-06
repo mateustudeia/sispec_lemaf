@@ -8,7 +8,7 @@ namespace Sispec.Domain.Entities
     {
         public int IdPessoa { get; set; }
         public int IdEvento { get; set; }
-        public Evento Evento { get; set; }
-        public Pessoa Pessoa { get; set; }
+        public virtual Evento Evento { get; set; }
+        public virtual Pessoa Pessoa { get; set; }
     }
 }

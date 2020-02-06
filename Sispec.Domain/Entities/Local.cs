@@ -9,7 +9,7 @@ namespace Sispec.Domain.Entities
         public string Nome { get; set; }
         public int Capacidade { get; set; }
 
-        public IList<Evento> Evento { get; set; }
+        public virtual IList<Evento> Evento { get; set; }
 
     }
 }
