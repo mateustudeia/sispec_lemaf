@@ -20,5 +20,7 @@ namespace Sispec.Service
             }
             return _palestra;
         }
+
+
     }
 }

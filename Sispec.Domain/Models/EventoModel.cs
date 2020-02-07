@@ -11,6 +11,8 @@ namespace Sispec.Domain.Models
         public virtual string Tema { get; set; }
         public virtual string Descricao { get; set; }
         public virtual LocalModel Local { get; set; }
+        public virtual int TipoEvento { get; set; }
+        //public InscritoEventoModel Inscritos { get; set; }
 
 
         public EventoModel()
@@ -23,6 +25,8 @@ namespace Sispec.Domain.Models
             Tema = evento.Tema;
             Descricao = evento.Descricao;
             Local = new LocalModel(evento.Local);
+            TipoEvento = evento.IdTipo;
+
         }
     }
 }

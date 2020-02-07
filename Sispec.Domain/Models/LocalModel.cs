@@ -7,6 +7,7 @@ namespace Sispec.Domain.Models
 {
     public class LocalModel
     {
+        public int Id { get; set; }
         public string Nome { get; set; }
         public int Capacidade { get; set; }
 
@@ -14,6 +15,7 @@ namespace Sispec.Domain.Models
         {
             Nome = local.Nome;
             Capacidade = local.Capacidade;
+            Id = local.Id;
         }
     }
 }

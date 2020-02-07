@@ -24,7 +24,7 @@ namespace Sispec.Application.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<EventoModel> Get(int id)
+        public ActionResult Get(int id)
         {
             var _evento = _eventoService.EventoById(id);
             switch (_evento.IdTipo)
@@ -48,7 +48,7 @@ namespace Sispec.Application.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Evento item)
+        public IActionResult Post([FromBody] EventoModel item)
         {
 
             _eventoService.Inserir(item);

@@ -29,21 +29,38 @@ namespace Sispec.Service
             return _evento;
         }
         
-        public void Inserir(Evento evento)
+        public void Inserir(EventoModel evento)
         {
-            Post(evento);
-            if (evento.IdTipo == (int)TipoEventoEnum.Palestra)
+            if (evento.TipoEvento == (int)TipoEventoEnum.Palestra)
             {
-                PalestraService palestra = new PalestraService();
-                palestra.Post(evento.Palestra);
-            } else if (evento.IdTipo == (int)TipoEventoEnum.Entreterimento)
+                 var palestraModel = (PalestraModel)evento;
+
+                _evento = new Evento(palestraModel);
+                Post(_evento);
+
+                var _palestraService = new PalestraService();
+                var _palestra = new Palestra(palestraModel);
+                _palestraService.Post(_palestra);                
+            }
+            else if (evento.TipoEvento == (int)TipoEventoEnum.Entreterimento)
             {
-                EntreterimentoService entreterimento = new EntreterimentoService();
-                entreterimento.Post(evento.Entreterimento);
-            } else if(evento.IdTipo == (int)TipoEventoEnum.Curso)
+                var entreterimentoModel = (EntreterimentoModel)evento;
+                _evento = new Evento(entreterimentoModel);
+                Post(_evento);
+
+                var _entreterimentoService = new EntreterimentoService();
+                var _entreterimento = new Entreterimento(entreterimentoModel);
+                _entreterimentoService.Post(_entreterimento);
+
+            } else if(evento.TipoEvento == (int)TipoEventoEnum.Curso)
             {
-                CursoService curso = new CursoService();
-                curso.Post(evento.Curso);
+                var cursoModel = (CursoModel)evento;
+                _evento = new Evento(cursoModel);
+                Post(_evento);
+
+                var _cursoService = new CursoService();
+                var _curso = new Curso(cursoModel);
+                _cursoService.Post(_curso);
             }
         }
 

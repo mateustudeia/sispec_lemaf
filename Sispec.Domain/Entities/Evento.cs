@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sispec.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -17,5 +18,18 @@ namespace Sispec.Domain.Entities
         public virtual Curso Curso { get; set; }
         public virtual Palestra Palestra { get; set; }
         public virtual Entreterimento Entreterimento { get; set; }
+
+        public Evento()
+        {
+
+        }
+
+        public Evento(EventoModel evento)
+        {
+            Tema = evento.Tema;
+            Descricao = evento.Descricao;
+            IdLocal = evento.Local.Id;
+            IdTipo = evento.TipoEvento;
+        }
     }
 } 

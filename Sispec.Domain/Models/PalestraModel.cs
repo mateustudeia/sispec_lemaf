@@ -8,14 +8,20 @@ namespace Sispec.Domain.Models
     public class PalestraModel : EventoModel
     {
         public DateTime Data { get; set; }
-        public DateTime tempoDuracao { get; set; }
+        public string TempoDuracao { get; set; }
         public PessoaModel Palestrante { get; set; }
+
+        public PalestraModel()
+        {
+
+        }
 
         public PalestraModel(Evento evento) : base(evento)
         {
             Data = evento.Palestra.Data;
-            tempoDuracao = evento.Palestra.tempoDuracao;
+            TempoDuracao = evento.Palestra.TempoDuracao;
             Palestrante = new PessoaModel(evento.Palestra.Palestrante);
         }
+
     }
 }

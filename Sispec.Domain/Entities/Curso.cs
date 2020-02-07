@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sispec.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,6 +17,19 @@ namespace Sispec.Domain.Entities
 
         public virtual Evento Evento { get; set; }
 
+        public Curso()
+        {
 
+        }
+
+        public Curso(CursoModel cursoModel)
+        {
+            DataInicio = cursoModel.DataInicio;
+            DataFim = cursoModel.DataFim;
+            TempoDuracao = cursoModel.TempoDuracao;
+            PreRequisitos = cursoModel.PreRequisitos;
+            FerramentasUtilizadas = cursoModel.FerramentasUtilizadas;
+            IdPessoa = cursoModel.Orientador.Id;
+        }
     }
 }
