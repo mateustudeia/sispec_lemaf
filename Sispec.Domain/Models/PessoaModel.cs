@@ -16,11 +16,16 @@ namespace Sispec.Domain.Models
 
         public PessoaModel (Pessoa pessoa)
         {
+            Id = pessoa.Id;
             Nome = pessoa.Nome;
             Cpf = pessoa.Cpf;
             Contato = pessoa.Contato;
             Email = pessoa.Email;
             DataNascimento = pessoa.DataNascimento;
+        }
+        public PessoaModel()
+        {
+
         }
     }
 }

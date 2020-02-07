@@ -5,8 +5,9 @@ using System.Text;
 
 namespace Sispec.Domain.Models
 {
-    public class CursoModel : EventoModel
+    public class CursoModel
     {
+        public int Id { get; set; }
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
         public string TempoDuracao { get; set; }
@@ -14,14 +15,24 @@ namespace Sispec.Domain.Models
         public string FerramentasUtilizadas { get; set; }
         public PessoaModel Orientador { get; set; }
 
-        public CursoModel(Evento evento) : base(evento)
+        public CursoModel(Curso curso)
         {
-            DataInicio = evento.Curso.DataInicio;
-            DataFim = evento.Curso.DataFim;
-            TempoDuracao = evento.Curso.TempoDuracao;
-            PreRequisitos = evento.Curso.PreRequisitos;
-            FerramentasUtilizadas = evento.Curso.FerramentasUtilizadas;
-            Orientador = new PessoaModel(evento.Curso.Orientador);
+            Id = curso.Id;
+            DataInicio = curso.DataInicio;
+            DataFim = curso.DataFim;
+            TempoDuracao = curso.TempoDuracao;
+            PreRequisitos = curso.PreRequisitos;
+            FerramentasUtilizadas = curso.FerramentasUtilizadas;
+            Orientador = new PessoaModel(curso.Orientador);
+        }
+
+        public CursoModel(EventoModel evento) 
+        {
+
+        }
+        public CursoModel()
+        {
+
         }
     }
 }

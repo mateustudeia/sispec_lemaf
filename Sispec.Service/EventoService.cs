@@ -31,37 +31,13 @@ namespace Sispec.Service
         
         public void Inserir(EventoModel evento)
         {
-            if (evento.TipoEvento == (int)TipoEventoEnum.Palestra)
-            {
-                 var palestraModel = (PalestraModel)evento;
+         
+            _evento = new Evento(evento);
+            Post(_evento);
 
-                _evento = new Evento(palestraModel);
-                Post(_evento);
-
-                var _palestraService = new PalestraService();
-                var _palestra = new Palestra(palestraModel);
-                _palestraService.Post(_palestra);                
-            }
-            else if (evento.TipoEvento == (int)TipoEventoEnum.Entreterimento)
-            {
-                var entreterimentoModel = (EntreterimentoModel)evento;
-                _evento = new Evento(entreterimentoModel);
-                Post(_evento);
-
-                var _entreterimentoService = new EntreterimentoService();
-                var _entreterimento = new Entreterimento(entreterimentoModel);
-                _entreterimentoService.Post(_entreterimento);
-
-            } else if(evento.TipoEvento == (int)TipoEventoEnum.Curso)
-            {
-                var cursoModel = (CursoModel)evento;
-                _evento = new Evento(cursoModel);
-                Post(_evento);
-
-                var _cursoService = new CursoService();
-                var _curso = new Curso(cursoModel);
-                _cursoService.Post(_curso);
-            }
+                //var _palestraService = new PalestraService();
+                //var _palestra = new Palestra(palestraModel);
+                //_palestraService.Post(_palestra);                
         }
 
     }

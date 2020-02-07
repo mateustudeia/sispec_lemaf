@@ -5,17 +5,17 @@ using System.Text;
 
 namespace Sispec.Domain.Models
 {
-    public class EntreterimentoModel : EventoModel
+    public class EntreterimentoModel
     {
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
         public PessoaModel Organizador { get; set; }
 
-        public EntreterimentoModel(Evento evento) : base(evento)
+        public EntreterimentoModel(Entreterimento entreterimento)
         {
-            DataInicio = evento.Entreterimento.DataInicio;
-            DataFim = evento.Entreterimento.DataFim;
-            Organizador = new PessoaModel(evento.Entreterimento.Organizador);
+            DataInicio = entreterimento.DataInicio;
+            DataFim = entreterimento.DataFim;
+            Organizador = new PessoaModel(entreterimento.Organizador);
         } 
     }
 }

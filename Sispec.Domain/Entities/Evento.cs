@@ -1,4 +1,5 @@
-﻿using Sispec.Domain.Models;
+﻿using Sispec.Domain.Entities.Enums;
+using Sispec.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -30,6 +31,19 @@ namespace Sispec.Domain.Entities
             Descricao = evento.Descricao;
             IdLocal = evento.Local.Id;
             IdTipo = evento.TipoEvento;
+            if ((evento.TipoEvento == (int)TipoEventoEnum.Palestra))
+            {
+                Palestra = new Palestra(evento.Palestra);
+            }
+            else if (evento.TipoEvento == (int)TipoEventoEnum.Curso)
+            {
+                Curso = new Curso(evento.Curso);
+            }
+            else if (evento.TipoEvento == (int)TipoEventoEnum.Entreterimento)
+            {
+                Entreterimento = new Entreterimento(evento.Entreterimento);
+            }
+            
         }
     }
 } 

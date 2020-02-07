@@ -17,5 +17,9 @@ namespace Sispec.Domain.Models
             Capacidade = local.Capacidade;
             Id = local.Id;
         }
+        public LocalModel()
+        {
+
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Sispec.Domain.Models
 {
-    public class PalestraModel : EventoModel
+    public class PalestraModel
     {
         public DateTime Data { get; set; }
         public string TempoDuracao { get; set; }
@@ -16,11 +16,11 @@ namespace Sispec.Domain.Models
 
         }
 
-        public PalestraModel(Evento evento) : base(evento)
+        public PalestraModel(Palestra palestra)
         {
-            Data = evento.Palestra.Data;
-            TempoDuracao = evento.Palestra.TempoDuracao;
-            Palestrante = new PessoaModel(evento.Palestra.Palestrante);
+            Data = palestra.Data;
+            TempoDuracao = palestra.TempoDuracao;
+            Palestrante = new PessoaModel(palestra.Palestrante);
         }
 
     }

@@ -15,36 +15,21 @@ namespace Sispec.Application.Controllers
     public class EventoController : ControllerBase
     {
         private EventoService _eventoService = new EventoService();
-        private SispecService<Evento> service = new SispecService<Evento>();
+        private SispecService<Evento> _service = new SispecService<Evento>();
 
         [HttpGet]
-        public ActionResult<IList<Evento>> Get()
+        public ActionResult<IList<EventoModel>> Get()
         {
-            return Ok(_eventoService.Get());
+            var eventos = _eventoService.Get().Select(x => new EventoModel(x)).ToList();
+            return Ok(eventos);
         }
 
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
-            var _evento = _eventoService.EventoById(id);
-            switch (_evento.IdTipo)
-            {
-                case (int)TipoEventoEnum.Palestra:
-                    var palestra = new PalestraModel(_evento);
-                    return Ok(palestra);
-                case (int)TipoEventoEnum.Entreterimento:
-                    var entreterimento = new EntreterimentoModel(_evento);
-                    break;
-                case (int)TipoEventoEnum.Curso:
-                    var curso = new CursoModel(_evento);
-                    return Ok(curso);
-                default:
+            var _evento = new EventoModel(_eventoService.EventoById(id));
 
-
-                    break;
-            }
-
-            return Ok(_eventoService.EventoById(id));
+            return Ok(_evento);
         }
 
         [HttpPost]
@@ -66,7 +51,7 @@ namespace Sispec.Application.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            service.Delete(id);
+            _service.Delete(id);
             return new NoContentResult();
         }
     }
