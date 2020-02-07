@@ -15,7 +15,7 @@ namespace Sispec.Domain.Models
         {
             DataInicio = evento.Entreterimento.DataInicio;
             DataFim = evento.Entreterimento.DataFim;
-            Organizador = new PessoaModel(evento.Entreterimento.Pessoa);
+            Organizador = new PessoaModel(evento.Entreterimento.Organizador);
         } 
     }
 }

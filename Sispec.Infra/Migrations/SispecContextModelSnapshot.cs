@@ -31,7 +31,7 @@ namespace Sispec.Infra.Migrations
 
                     b.Property<string>("FerramentasUtilizadas");
 
-                    b.Property<int>("Orientador");
+                    b.Property<int>("IdPessoa");
 
                     b.Property<string>("PreRequisitos");
 
@@ -39,7 +39,7 @@ namespace Sispec.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Orientador");
+                    b.HasIndex("IdPessoa");
 
                     b.ToTable("curso");
                 });
@@ -53,11 +53,11 @@ namespace Sispec.Infra.Migrations
 
                     b.Property<DateTime>("DataInicio");
 
-                    b.Property<int>("Organizador");
+                    b.Property<int>("IdPessoa");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Organizador");
+                    b.HasIndex("IdPessoa");
 
                     b.ToTable("entreterimento");
                 });
@@ -91,6 +91,8 @@ namespace Sispec.Infra.Migrations
 
                     b.Property<int>("IdEvento");
 
+                    b.Property<int>("Id");
+
                     b.HasKey("IdPessoa", "IdEvento");
 
                     b.HasIndex("IdEvento");
@@ -119,13 +121,13 @@ namespace Sispec.Infra.Migrations
 
                     b.Property<DateTime>("Data");
 
-                    b.Property<int>("Palestrante");
+                    b.Property<int>("IdPessoa");
 
                     b.Property<DateTime>("tempoDuracao");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Palestrante");
+                    b.HasIndex("IdPessoa");
 
                     b.ToTable("palestra");
                 });
@@ -177,9 +179,9 @@ namespace Sispec.Infra.Migrations
                         .HasForeignKey("Sispec.Domain.Entities.Curso", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Pessoa")
+                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Orientador")
                         .WithMany("Curso")
-                        .HasForeignKey("Orientador")
+                        .HasForeignKey("IdPessoa")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -190,9 +192,9 @@ namespace Sispec.Infra.Migrations
                         .HasForeignKey("Sispec.Domain.Entities.Entreterimento", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Pessoa")
+                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Organizador")
                         .WithMany("Entreterimento")
-                        .HasForeignKey("Organizador")
+                        .HasForeignKey("IdPessoa")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -229,9 +231,9 @@ namespace Sispec.Infra.Migrations
                         .HasForeignKey("Sispec.Domain.Entities.Palestra", "Id")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Pessoa")
+                    b.HasOne("Sispec.Domain.Entities.Pessoa", "Palestrante")
                         .WithMany("Palestra")
-                        .HasForeignKey("Palestrante")
+                        .HasForeignKey("IdPessoa")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

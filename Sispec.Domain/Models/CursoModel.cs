@@ -21,7 +21,7 @@ namespace Sispec.Domain.Models
             TempoDuracao = evento.Curso.TempoDuracao;
             PreRequisitos = evento.Curso.PreRequisitos;
             FerramentasUtilizadas = evento.Curso.FerramentasUtilizadas;
-            Orientador = new PessoaModel(evento.Curso.Pessoa);
+            Orientador = new PessoaModel(evento.Curso.Orientador);
         }
     }
 }

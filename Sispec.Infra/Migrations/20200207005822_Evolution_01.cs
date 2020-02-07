@@ -155,6 +155,7 @@ namespace Sispec.Infra.Migrations
                 schema: "sisEpec",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false),
                     IdPessoa = table.Column<int>(nullable: false),
                     IdEvento = table.Column<int>(nullable: false)
                 },
@@ -178,7 +179,7 @@ namespace Sispec.Infra.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "pelestra",
+                name: "palestra",
                 schema: "sisEpec",
                 columns: table => new
                 {
@@ -189,16 +190,16 @@ namespace Sispec.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_pelestra", x => x.palestra_id);
+                    table.PrimaryKey("PK_palestra", x => x.palestra_id);
                     table.ForeignKey(
-                        name: "FK_pelestra_evento_palestra_id",
+                        name: "FK_palestra_evento_palestra_id",
                         column: x => x.palestra_id,
                         principalSchema: "sisEpec",
                         principalTable: "evento",
                         principalColumn: "id_evento",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_pelestra_pessoa_IdPessoa",
+                        name: "FK_palestra_pessoa_IdPessoa",
                         column: x => x.IdPessoa,
                         principalSchema: "sisEpec",
                         principalTable: "pessoa",
@@ -237,9 +238,9 @@ namespace Sispec.Infra.Migrations
                 column: "IdEvento");
 
             migrationBuilder.CreateIndex(
-                name: "IX_pelestra_IdPessoa",
+                name: "IX_palestra_IdPessoa",
                 schema: "sisEpec",
-                table: "pelestra",
+                table: "palestra",
                 column: "IdPessoa");
         }
 
@@ -258,7 +259,7 @@ namespace Sispec.Infra.Migrations
                 schema: "sisEpec");
 
             migrationBuilder.DropTable(
-                name: "pelestra",
+                name: "palestra",
                 schema: "sisEpec");
 
             migrationBuilder.DropTable(

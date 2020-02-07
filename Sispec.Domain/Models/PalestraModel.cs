@@ -15,7 +15,7 @@ namespace Sispec.Domain.Models
         {
             Data = evento.Palestra.Data;
             tempoDuracao = evento.Palestra.tempoDuracao;
-            Palestrante = new PessoaModel(evento.Palestra.Pessoa);
+            Palestrante = new PessoaModel(evento.Palestra.Palestrante);
         }
     }
 }
