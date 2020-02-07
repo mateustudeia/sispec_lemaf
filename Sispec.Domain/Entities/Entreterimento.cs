@@ -8,8 +8,8 @@ namespace Sispec.Domain.Entities
     {
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
-        public int Organizador { get; set; }
-        public virtual Pessoa Pessoa { get; set; }
+        public int IdPessoa { get; set; }
+        public virtual Pessoa Organizador{ get; set; }
 
         public virtual Evento Evento { get; set; }
     }
