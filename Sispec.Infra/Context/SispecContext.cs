@@ -22,7 +22,7 @@ namespace Sispec.Infra.Context
         {
             optionsBuilder
                 .UseLazyLoadingProxies()
-                .UseNpgsql("Host = localhost; Database = dbsispec; Username = postgres; Password = postgre");
+                .UseNpgsql("Host = localhost; Database = dbsispec; Username = postgres; Password = postgres");
             //=> optionsBuilder.UseNpgsql("Host = localhost; Database = sispec; Username = postgres; Password = postgre");
 
             
